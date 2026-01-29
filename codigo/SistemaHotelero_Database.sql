@@ -72,7 +72,6 @@ CREATE TABLE EmpresasHoteleras (
     Tipo INT NOT NULL,
     CorreoElectronico VARCHAR(256) UNIQUE NOT NULL,
     -- Dirección (Atributo Compuesto Expandido)
-    Provincia VARCHAR(64) NOT NULL,
     Canton VARCHAR(64) NOT NULL,
     Distrito VARCHAR(64) NOT NULL,
     Barrio VARCHAR(64) NOT NULL,
@@ -260,7 +259,6 @@ CREATE TABLE Cliente (
     ClienteID INT IDENTITY NOT NULL,
     TipoIdentificacion VARCHAR(32) NOT NULL,
     Identificacion VARCHAR(64) NOT NULL,
-    Contrasena VARCHAR(32) NOT NULL,
 
     FechaNacimiento DATE, -- formato: YYYY-MM-DD
     PaisResidencia VARCHAR(64),
@@ -344,17 +342,20 @@ CREATE TABLE Reserva (
     CantPersonas INT DEFAULT 1 NOT NULL,
     PoseeVehiculo BIT DEFAULT 0 NOT NULL,
     NumeroDeNoches INT NOT NULL,
+    EstadoReserva VARCHAR(16) NOT NULL DEFAULT 'ACTIVO'
+
 
     -- Restriciones
     CONSTRAINT PK_Reserva PRIMARY KEY (ReservaID),
     CONSTRAINT FK_Reserva_Cliente FOREIGN KEY (ClienteID) REFERENCES Cliente(ClienteID),
     CONSTRAINT FK_Reserva_Habitacion FOREIGN KEY (EmpresaID,NumeroHabitacion) REFERENCES Habitaciones(EmpresaID,NumeroHabitacion),
 
-    CONSTRAINT CHK_CantPersonasReserva CHECK (CantPersonas > 1),
+    CONSTRAINT CHK_CantPersonasReserva CHECK (CantPersonas >= 1),
     CONSTRAINT CHK_CantNochesReserva CHECK (NumeroDeNoches >= 1),
     CONSTRAINT CHL_PoseeVehiculo CHECK (PoseeVehiculo = 1 OR PoseeVehiculo = 0),
     --GETDATE() da la fecha y hora del sistema, el convert toma solo el atributo DATE
-    CONSTRAINT CHK_FechaReserva CHECK (FechaEntrada > CONVERT(DATE,GETDATE()))
+    CONSTRAINT CHK_FechaReserva CHECK (FechaEntrada > CONVERT(DATE,GETDATE())),
+    CONSTRAINT CHK_EstadoReserva CHECK(EstadoReserva = 'ACTIVO' OR EstadoReserva = 'CERRADO')
 );
 
 
@@ -367,6 +368,7 @@ CREATE TABLE Factura (
 
     FormatoDePago VARCHAR(32) NOT NULL,
     FechaFacturacion DATETIME DEFAULT GETDATE() NOT NULL,
+
 
     CargosAdicionales INT DEFAULT 0 NOT NULL,
 
@@ -405,7 +407,6 @@ CREATE TABLE EmpresasRecreativas (
     NombreContacto VARCHAR(64) NOT NULL,
 
     -- Dirección (Atributo Compuesto Expandido)
-    Provincia VARCHAR(64) NOT NULL,
     Canton VARCHAR(64) NOT NULL,
     Distrito VARCHAR(64) NOT NULL,
     OtrasSenas VARCHAR(MAX) NOT NULL,
@@ -445,3 +446,8 @@ CREATE TABLE Actividad_Recreativa (
     CONSTRAINT FK_Actividad_Recreativa FOREIGN KEY (EmpresaID) REFERENCES EmpresasRecreativas(EmpresaID),
     CONSTRAINT FK_ActividadID FOREIGN KEY (ActividadID) REFERENCES TipoActividad(ActividadID)
 );
+
+
+
+
+
