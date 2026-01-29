@@ -1,0 +1,303 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: #69c3a0; /* El verde menta del fondo */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.container {
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+.logo {
+    font-family: 'Great Vibes', cursive;
+    color: #e63946; /* Rojo vibrante */
+    font-size: 4rem;
+    margin-bottom: 20px;
+    font-weight: normal;
+}
+
+.login-card {
+    background-color: #dbdbdb; /* Gris claro del recuadro */
+    padding: 40px 30px;
+    border-radius: 50px; /* Bordes muy redondeados */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.login-card h2 {
+    color: #4a4a4a;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    font-weight: 400;
+}
+
+.input-group {
+    margin-bottom: 30px;
+}
+
+.input-group input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #8e8e8e; /* Línea inferior */
+    padding: 10px;
+    font-size: 1.5rem;
+    text-align: center;
+    color: #4a4a4a;
+    outline: none;
+}
+
+.input-group input::placeholder {
+    color: #666;
+}
+
+.btn-ingresar {
+    background: none;
+    border: none;
+    color: #555;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: color 0.3s;
+}
+
+.btn-ingresar:hover {
+    color: #000;
+}
+
+.sign-up {
+    display: block;
+    color: #3e7a63;
+    text-decoration: none;
+    font-size: 1.2rem;
+    margin-top: 20px;
+}
+
+.sign-up:hover {
+    text-decoration: underline;
+}
+
+/*
+Estilos para el sign up
+
+*/
+
+.select-wrapper select {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #8e8e8e;
+    padding: 10px;
+    font-size: 1.5rem;
+    color: #4a4a4a;
+    appearance: none; /* Quita la flecha por defecto */
+    text-align: center;
+    cursor: pointer;
+}
+
+/* Flecha personalizada */
+.select-wrapper {
+    position: relative;
+}
+
+.select-wrapper::after {
+    content: '∨';
+    position: absolute;
+    right: 10px;
+    top: 15px;
+    font-size: 1.2rem;
+    color: #4a4a4a;
+    pointer-events: none;
+}
+
+
+
+
+/*
+
+Estilos para las inscripciones
+
+*/
+
+
+/* Contenedor principal de la tarjeta */
+.info-card {
+    background-color: #dbdbdb;
+    padding: 30px;
+    border-radius: 50px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+}
+
+
+/* Área que permite el scroll */
+.scroll-area {
+    max-height: 400px; /* Ajusta según prefieras */
+    overflow-y: auto;  /* Activa el scroll vertical */
+    padding-right: 20px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+/* --- ESTILO DE LA BARRA DE DESPLAZAMIENTO (WebKit) --- */
+
+/* 1. El canal de la barra */
+.scroll-area::-webkit-scrollbar {
+    width: 12px;
+}
+
+/* 2. El fondo de la barra (el carril) */
+.scroll-area::-webkit-scrollbar-track {
+    background: transparent; 
+}
+
+/* 3. La parte que se mueve (blanca y redondeada) */
+.scroll-area::-webkit-scrollbar-thumb {
+    background-color: white;
+    border-radius: 10px;
+    border: 2px solid #dbdbdb; /* Crea un margen para que no toque los bordes */
+}
+
+/* Estilo de los inputs dentro de la info */
+.input-container {
+    margin-bottom: 15px;
+}
+
+.input-container label {
+    display: block;
+    color: #4a4a4a;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+
+.input-container input, .input-container select {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background-color: white;
+    color: #999;
+}
+
+.btn-crear {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 12px 60px;
+    border-radius: 15px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-crear:hover {
+    background-color: #000;
+}
+
+/*
+Estilos para comprobante
+*/
+
+/* Fondo gris para esta pantalla específica */
+.body-gris {
+    background-color: #dbdbdb;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.success-card {
+    background-color: white;
+    padding: 50px 40px;
+    border-radius: 40px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    text-align: center;
+    max-width: 450px;
+    width: 90%;
+    animation: fadeIn 0.5s ease-out; /* Animación de entrada */
+}
+
+/* El círculo del checkmark */
+.success-icon {
+    width: 80px;
+    height: 80px;
+    background-color: #69c3a0; /* El verde tropical que venimos usando */
+    color: white;
+    font-size: 3rem;
+    line-height: 80px;
+    border-radius: 50%;
+    margin: 0 auto 25px;
+}
+
+.success-card h2 {
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.success-message {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 20px;
+    margin-bottom: 25px;
+}
+
+.success-message p {
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.user-email {
+    font-weight: bold;
+    color: #3e7a63;
+    font-size: 1.1rem;
+}
+
+.sub-text {
+    color: #999;
+    font-style: italic;
+    margin-bottom: 30px;
+}
+
+.btn-finalizar {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 15px 60px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.btn-finalizar:hover {
+    background-color: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Animación simple */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+
+

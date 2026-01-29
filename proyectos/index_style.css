@@ -1,0 +1,603 @@
+.dashboard {
+    background-color: #dbdbdb; /* Fondo gris de la imagen */
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.logo.small { font-size: 2.5rem; }
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    margin-left: 20px;
+    font-size: 1.1rem;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.search-container input {
+    border: none;
+    border-bottom: 2px solid #333;
+    background: transparent;
+    font-size: 2rem;
+    width: 60%;
+    text-align: center;
+    outline: none;
+}
+
+.search-icon { font-size: 2rem; margin-left: 10px; cursor: pointer; }
+
+.section-title { margin-bottom: 20px; font-weight: normal; }
+
+.hotel-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.hotel-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.img-placeholder {
+    background-color: #eee;
+    height: 250px;
+    background-image: url('placeholder-icon.png'); /* Aquí iría tu imagen */
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.card-info { padding: 15px; text-align: left; }
+
+.card-info h4 { font-size: 1.2rem; color: #333; }
+
+.card-info .price { font-weight: bold; font-size: 1.3rem; margin: 5px 0; }
+
+.card-info .body-text { color: #888; font-size: 0.9rem; }
+
+
+/*
+Estilos para los detalles de las habitaciones
+
+*/
+
+.logo {
+    font-family: 'Great Vibes', cursive;
+    color: #e63946; /* Rojo vibrante */
+    font-size: 4rem;
+    margin-bottom: 20px;
+    font-weight: normal;
+}
+
+/* Card principal de detalles */
+.hotel-detail-card {
+    background: white;
+    border-radius: 50px;
+    padding: 40px; /* Más espacio interno */
+    width: 95%;
+    max-width: 1000px; /* Un poco más ancha */
+    min-height: 40vh;  /* Ocupa al menos el 80% de la altura de la pantalla */
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Reutilizamos y ajustamos el scroll que ya teníamos */
+.scroll-area {
+    max-height: 800vh; /* Altura para que quepa en la pantalla */
+    overflow-y: auto;
+    padding-right: 20px;
+}
+
+/* Personalización del scroll (Blanco con borde gris para que se note en el fondo blanco) */
+.scroll-area::-webkit-scrollbar-thumb {
+    background-color: #f0f0f0;
+    border: 2px solid #ddd;
+}
+
+/* Layout Superior */
+.main-info {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+    align-items: flex-start;
+}
+
+.large-img-placeholder {
+    width: 300px;
+    height: 300px;
+    background-color: #eee;
+    background-image: url('placeholder-icon.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.header-text h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.price-tag {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+/* Botón Reservar */
+.btn-reservar {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 15px 50px;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+/* Secciones de texto */
+.description-section h3, .extra-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.description-section p {
+    line-height: 1.6;
+    color: #444;
+}
+
+/* Galería y Comodidades */
+.amenities-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    list-style: none;
+}
+
+.photo-gallery {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.thumb {
+    width: 100px;
+    height: 100px;
+    background: #eee;
+    border-radius: 8px;
+}
+
+
+/*
+estilos de reserva
+*/
+
+/* Contenedor principal de la tarjeta */
+.info-card-booking {
+    background-color: #255e3a9a;
+    padding: 30px;
+    border-radius: 50px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+}
+
+.body2 {
+    background-color: #dbdbdb; /* El verde menta del fondo */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.h2-booking{
+    font-size: 35;
+    margin-bottom: 20px;
+}
+
+
+/*
+Estilos para la busqueda
+*/
+
+/* Contenedor de búsqueda ajustado */
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 50px;
+    position: relative; /* Importante para que el panel se ubique respecto a esto */
+}
+
+.search-input-wrapper {
+    border-bottom: 2px solid #333;
+    display: flex;
+    align-items: center;
+    width: 60%;
+}
+
+.search-input-wrapper input {
+    border: none;
+    background: transparent;
+    font-size: 2rem;
+    width: 100%;
+    text-align: center;
+    outline: none;
+}
+
+/* Botón del embudo */
+.filter-trigger {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+/* EL PANEL FLOTANTE */
+.filter-dropdown {
+    position: absolute;
+    top: 60px; /* Se desplaza hacia abajo del buscador */
+    right: 15%; /* Alineado con el icono */
+    background: white;
+    width: 280px;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    z-index: 1000;
+    text-align: left;
+    display: none; /* OCULTO */
+}
+
+/* Clase que activaremos con JS */
+.filter-dropdown.show {
+    display: block;
+}
+
+/* Oculto por defecto */
+.filter-dropdown {
+    display: none; 
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: white;
+    z-index: 1000;
+    /* Añade aquí el resto de tu estilo (border-radius, padding, etc.) */
+}
+
+/* Se muestra cuando el JS añade la clase .show */
+.filter-dropdown.show {
+    display: block !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* 
+Estilos internos de los filtros 
+*/
+
+
+
+
+
+.filter-label { font-weight: bold; margin-bottom: 8px; font-size: 0.9rem; }
+
+.tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 15px; }
+
+.tag { background: #f0f0f0; padding: 5px 8px; border-radius: 5px; font-size: 0.8rem; }
+
+.filter-section { 
+    border-top: 1px solid #eee; 
+    padding-top: 10px; 
+    margin-top: 10px; 
+}
+
+.check-container { display: flex; gap: 10px; margin-bottom: 10px; cursor: pointer; }
+.check-container small { color: #888; }
+
+.slider { width: 100%; accent-color: #333; }
+
+.simple-check { display: block; margin-bottom: 5px; cursor: pointer; }
+
+/*
+Estilos para el crud
+*/
+/* Tarjeta principal del CRUD */
+.crud-card {
+    background: white;
+    border-radius: 30px;
+    padding: 30px;
+    width: 95%;
+    max-width: 900px;
+    margin: 0 auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.crud-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.btn-add {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Área de Scroll personalizada */
+.scroll-area-crud {
+    max-height: 450px;
+    overflow-y: auto;
+    padding-right: 15px;
+}
+
+/* Reutilizando tu scrollbar favorito */
+.scroll-area-crud::-webkit-scrollbar { width: 10px; }
+.scroll-area-crud::-webkit-scrollbar-track { background: #f0f0f0; border-radius: 10px; }
+.scroll-area-crud::-webkit-scrollbar-thumb {
+    background: #dbdbdb; 
+    border-radius: 10px;
+    border: 2px solid #f0f0f0;
+}
+
+/* Estilo de la Tabla */
+.crud-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.crud-table th {
+    padding: 15px;
+    border-bottom: 2px solid #eee;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.crud-table td {
+    padding: 15px;
+    border-bottom: 1px solid #f9f9f9;
+    vertical-align: middle;
+}
+
+/* Etiquetas de estado */
+.status {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.available { background: #e6f4ea; color: #1e7e34; }
+.occupied { background: #feeceb; color: #d93025; }
+
+/* Botones de acción */
+.btn-edit, .btn-delete {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin-right: 10px;
+    transition: transform 0.2s;
+}
+
+.btn-edit:hover, .btn-delete:hover { transform: scale(1.2); }
+
+
+
+
+
+/*
+Estilos de gestion de habitacion
+*/
+
+
+
+
+/* Inputs estéticos para edición */
+.input-edit, .textarea-edit {
+    width: 100%;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    padding: 10px;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 15px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.input-edit:focus, .textarea-edit:focus {
+    border-color: #333;
+}
+
+.title-input {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.price-input {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.textarea-edit {
+    height: 120px;
+    resize: vertical;
+}
+
+/* Layout de la imagen y botón de carga */
+.image-upload-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.btn-change-img {
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+/* Grid de comodidades editable */
+.amenities-grid-edit {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.amenities-grid-edit label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Botón cancelar */
+.btn-cancel {
+    background: transparent;
+    border: none;
+    color: #888;
+    cursor: pointer;
+    text-decoration: underline;
+    margin-left: 15px;
+}
+
+.btn-add-thumb {
+    width: 100px;
+    height: 100px;
+    border: 2px dashed #ccc;
+    background: transparent;
+    border-radius: 8px;
+    font-size: 2rem;
+    color: #ccc;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+/*
+Estilos para la facturacion
+*/
+
+
+
+.invoice-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.invoice-number {
+    color: #888;
+    font-weight: bold;
+}
+
+.invoice-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    text-align: left;
+    margin: 20px 0;
+}
+
+.info-block label {
+    font-size: 0.8rem;
+    color: #69c3a0; /* Verde Tropic */
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.billing-details h3 {
+    text-align: left;
+    margin: 30px 0 15px;
+    font-size: 1.2rem;
+}
+
+.invoice-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.invoice-table th {
+    background-color: #f9f9f9;
+    padding: 10px;
+    text-align: left;
+    border-bottom: 2px solid #ddd;
+}
+
+.invoice-table td {
+    padding: 12px 10px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+}
+
+/* Caja de Totales */
+.invoice-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+}
+
+.summary-box {
+    width: 250px;
+    background: #f1f3f4;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.summary-row.total {
+    border-top: 2px solid #333;
+    padding-top: 10px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #000;
+}

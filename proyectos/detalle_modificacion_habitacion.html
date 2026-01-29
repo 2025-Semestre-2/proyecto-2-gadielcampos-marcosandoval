@@ -1,0 +1,77 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index_style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body bgcolor="#dbdbdb">
+    <div class="dashboard">
+    <header class="nav-bar">
+        <h1 class="logo">Tropic Limon</h1>
+        <div class="search-container">
+            <input type="text" placeholder="Panel de Administración" readonly>
+        </div>
+    </header>
+
+    <main class="content">
+        <div class="hotel-detail-card">
+            <div class="scroll-area">
+                <form id="editForm">
+                    
+                    <div class="main-info">
+                        <div class="image-upload-container">
+                            <div class="large-img-placeholder" id="imagePreview"></div>
+                            <input type="file" id="fileInput" style="display: none;" accept="image/*">
+                            <button type="button" class="btn-change-img" onclick="document.getElementById('fileInput').click()">Cambiar Imagen</button>
+                        </div>
+                        
+                        <div class="header-text">
+                            <label>Nombre de la Habitación / Hotel</label>
+                            <input type="text" class="input-edit title-input" value="Resort Playa Bonita">
+                            
+                            <label>Precio por noche ($)</label>
+                            <input type="number" class="input-edit price-input" value="100">
+                            
+                            <div class="edit-actions">
+                                <button type="submit" class="btn-reservar">Guardar Cambios</button>
+                                <button type="button" class="btn-cancel" onclick="window.history.back()">Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="description-section">
+                        <h3>Descripción</h3>
+                        <textarea class="textarea-edit">Texto molon que describe a este hospedaje como lo mejor del mundo, y que probablemente sea la mejor aventura que tendras nunca jamas en costa rica.</textarea>
+                    </div>
+
+                    <div class="extra-section">
+                        <h3>Comodidades</h3>
+                        <div class="amenities-grid-edit">
+                            <label><input type="checkbox" checked> Pool</label>
+                            <label><input type="checkbox" checked> Wi-Fi</label>
+                            <label><input type="checkbox" checked> Breakfast</label>
+                            <label><input type="checkbox" checked> A/C</label>
+                            <label><input type="checkbox"> Spa</label>
+                            <label><input type="checkbox"> Parking</label>
+                        </div>
+                    </div>
+
+                    <div class="extra-section">
+                        <h3>Galería de fotos</h3>
+                        <div class="photo-gallery">
+                            <div class="thumb"></div>
+                            <div class="thumb"></div>
+                            <div class="thumb"></div>
+                            <button type="button" class="btn-add-thumb">+</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div> 
+        </div>
+    </main>
+</div>
+</body>
+</html>

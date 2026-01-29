@@ -1,0 +1,102 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index_style.css">
+    <link rel="stylesheet" href="gestion_perfil.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <title>Tropic Limon</title>
+</head>
+<body bgcolor="#dbdbdb">
+    <div class="dashboard">
+    <header class="nav-bar">
+        <h1 class="logo small">Tropic Limon</h1>
+        <div class="nav-links">
+            <a href="dashboard.html">Volver al Panel</a>
+        </div>
+    </header>
+
+    <main class="content">
+        <div class="hotel-detail-card">
+            <div class="scroll-area">
+                <h2>Panel de Reportes</h2>
+                
+                <div class="tabs-container">
+                    <button class="tab-btn active" onclick="openTab(event, 'ingresos')">Ingresos y Ocupación</button>
+                    <button class="tab-btn" onclick="openTab(event, 'mercado')">Estadísticas de Mercado</button>
+                </div>
+
+                <div class="divider"></div>
+
+                <div id="ingresos" class="tab-content active">
+                    <section class="report-filters">
+                        <div class="filter-row">
+                            <div class="filter-item">
+                                <label>Rango de Fechas (Facturado)</label>
+                                <div class="date-inputs">
+                                    <input type="date"> <span>a</span> <input type="date">
+                                </div>
+                            </div>
+                            <div class="filter-item">
+                                <label>Filtrar por Habitación</label>
+                                <select class="input-edit">
+                                    <option>Todas las habitaciones</option>
+                                    <option>Habitación 101</option>
+                                    <option>Suite Junior</option>
+                                </select>
+                            </div>
+                            <button class="btn-reservar">Consultar</button>
+                        </div>
+                    </section>
+
+                    <div class="table-container">
+                        <h3>Detalle de Facturación</h3>
+                        <table class="crud-table">
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Habitación</th>
+                                    <th>Tipo</th>
+                                    <th>Total Facturado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>20/01/2026</td>
+                                    <td>102</td>
+                                    <td>Suite Junior</td>
+                                    <td>$728.85</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="mercado" class="tab-content">
+                    <div class="stats-grid">
+                        <div class="stat-mini-card">
+                            <label>Rango de Edades de Huéspedes</label>
+                            <div class="age-stats">
+                                <div class="age-bar"><span style="width: 20%"></span> 18-25 años (20%)</div>
+                                <div class="age-bar"><span style="width: 55%"></span> 26-40 años (55%)</div>
+                                <div class="age-bar"><span style="width: 25%"></span> 41+ años (25%)</div>
+                            </div>
+                        </div>
+
+                        <div class="stat-mini-card">
+                            <label>Demanda por Ubicación y Fecha</label>
+                            <ul class="demand-list">
+                                <li><strong>Limón Centro:</strong> Resort Playa Bonita (85% ocupación)</li>
+                                <li><strong>Puerto Viejo:</strong> Cabinas Caribe (70% ocupación)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+</div>
+<script src="gestion_scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index_style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body bgcolor="#dbdbdb">
+    <div class="dashboard">
+    <header class="nav-bar">
+        <h1 class="logo small">Tropic Limon</h1>
+        <div class="nav-links">
+            <a href="index.html">Inicio</a>
+            <a href="#">Panel Admin</a>
+        </div>
+    </header>
+
+    <main class="content">
+        <div class="crud-card">
+            <div class="crud-header">
+                <h2>Gestión de Habitaciones</h2>
+                <button class="btn-add">+ Añadir Habitación</button>
+            </div>
+
+            <div class="scroll-area-crud">
+                <table class="crud-table">
+                    <thead>
+                        <tr>
+                            <th>Nº</th>
+                            <th>Tipo</th>
+                            <th>Precio</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>101</td>
+                            <td>Doble Superior</td>
+                            <td>$120</td>
+                            <td><span class="status available">Disponible</span></td>
+                            <td>
+                                <button class="btn-edit">✏️</button>
+                                <button class="btn-delete">🗑️</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>102</td>
+                            <td>Suite Junior</td>
+                            <td>$200</td>
+                            <td><span class="status occupied">Ocupada</span></td>
+                            <td>
+                                <button class="btn-edit">✏️</button>
+                                <button class="btn-delete">🗑️</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>

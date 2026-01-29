@@ -1,0 +1,102 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="index_style.css">
+    <link rel="stylesheet" href="gestion_perfil.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard">
+    <header class="nav-bar">
+        <h1 class="logo small">Tropic Limon</h1>
+        <div class="nav-links">
+            <a href="dashboard.html">Volver al Panel</a>
+        </div>
+    </header>
+
+    <main class="content">
+        <div class="hotel-detail-card">
+            <div class="scroll-area">
+                <div class="invoice-header">
+                    <h2>Facturación de Reserva</h2>
+                    <p class="invoice-number">Folio: #TL-2026-045</p>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="invoice-grid">
+                    <div class="info-block">
+                        <label>Cliente</label>
+                        <p><strong>Juan Pérez</strong></p>
+                        <p>ID: 1-1234-5678</p>
+                    </div>
+                    <div class="info-block">
+                        <label>Habitación</label>
+                        <p>Suite Junior - #102</p>
+                        <p>3 Noches (15/02 - 18/02)</p>
+                    </div>
+                </div>
+
+                <div class="billing-details">
+                    <h3>Detalle de Cargos</h3>
+                    <table class="invoice-table">
+                        <thead>
+                            <tr>
+                                <th>Descripción</th>
+                                <th>Precio Unit.</th>
+                                <th>Cant.</th>
+                                <th>Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Hospedaje Suite Junior</td>
+                                <td>$200.00</td> <td>3</td>
+                                <td>$600.00</td> </tr>
+                            </tr>
+                            <tr>
+                                <td>Servicio de Limpieza</td>
+                                <td>$15.00</td>
+                                <td>1</td>
+                                <td>$15.00</td>
+                            </tr>
+                            <tr>
+                                <td>Uso de Parqueo (Vehículo)</td>
+                                <td>$10.00</td>
+                                <td>3</td>
+                                <td>$30.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="invoice-footer">
+                    <div class="summary-box">
+                        <div class="summary-row">
+                            <span>Subtotal:</span>
+                            <td>$645.00</td>
+                        </div>
+                        <div class="summary-row">
+                            <span>IVA (13%):</span>
+                            <td>$83.85 </td>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total a Pagar:</span>
+                            <td>$728.85</td> 
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-reservar">Generar Factura</button>
+                    <button type="button" class="btn-cancel">Imprimir Borrador</button>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>

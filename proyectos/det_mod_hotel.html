@@ -1,0 +1,91 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="gestion_perfil.css">
+    <link rel="stylesheet" href="index_style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body bgcolor="#dbdbdb">
+    <div class="dashboard">
+    <header class="nav-bar">
+        <h1 class="logo small">Tropic Limon</h1>
+        <div class="nav-links">
+            <a href="index.html">Atras</a>
+        </div>
+    </header>
+
+    <main class="content">
+        <div class="hotel-detail-card">
+            <div class="scroll-area">
+                <h2 class="section-title">Configuración del Hotel</h2>
+                
+                <form id="hotelSettingsForm">
+                    <div class="main-info">
+                        <div class="image-upload-container">
+                            <div class="large-img-placeholder" id="hotelLogoPreview">
+                                </div>
+                            <button type="button" class="btn-change-img">Cambiar Logo/Banner</button>
+                        </div>
+                        
+                        <div class="header-text">
+                            <div class="input-container">
+                                <label>Nombre Comercial</label>
+                                <input type="text" class="input-edit" value="Resort Playa Bonita">
+                            </div>
+                            <div class="input-container">
+                                <label>Eslogan</label>
+                                <input type="text" class="input-edit" value="Tu paraíso en el Caribe">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <div class="grid-form">
+                        <div class="input-container">
+                            <label>Correo de Reservas</label>
+                            <input type="email" class="input-edit" value="reservas@playabonita.com">
+                        </div>
+                        <div class="input-container">
+                            <label>Teléfono de Contacto</label>
+                            <input type="tel" class="input-edit" value="+506 8888-8888">
+                        </div>
+                        <div class="input-container full-width">
+                            <label>Dirección Exacta</label>
+                            <input type="text" class="input-edit" value="200m Norte de la Municipalidad, Limón, Costa Rica">
+                        </div>
+                    </div>
+
+                    <div class="description-section">
+                        <h3>Sobre nosotros</h3>
+                        <textarea class="textarea-edit">Somos un hotel comprometido con la naturaleza y el confort de nuestros huéspedes...</textarea>
+                    </div>
+
+                    <div class="extra-section">
+                        <h3>Redes Sociales</h3>
+                        <div class="social-inputs">
+                            <div class="input-group-social">
+                                <span>Facebook.com/</span>
+                                <input type="text" class="input-edit" value="playabonitacr">
+                            </div>
+                            <div class="input-group-social">
+                                <span>Instagram.com/</span>
+                                <input type="text" class="input-edit" value="playabonita_resort">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-reservar">Guardar Perfil</button>
+                        <button type="button" class="btn-cancel">Descartar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
