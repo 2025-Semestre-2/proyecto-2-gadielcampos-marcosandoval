@@ -1,4 +1,4 @@
-USE master;
+ï»¿USE master;
 GO
 
 -- 1. Forzar cierre de conexiones y borrar si existe
@@ -21,8 +21,8 @@ GO
 CREATE TABLE Usuario (
     UsuarioID INT IDENTITY,
     NombreUsuario VARCHAR(32) NOT NULL,
-    Contrasena VARCHAR(32) NOT NULL,
-    TipoUsuario VARCHAR(16) NOT NULL,
+    Contrasena VARCHAR(64) NOT NULL,
+    TipoUsuario VARCHAR(32) NOT NULL,
 
     --Restricciones
     CONSTRAINT PK_UsuarioID PRIMARY KEY (UsuarioID),
@@ -71,7 +71,7 @@ CREATE TABLE EmpresasHoteleras (
     Nombre VARCHAR(100) NOT NULL,
     Tipo INT NOT NULL,
     CorreoElectronico VARCHAR(256) UNIQUE NOT NULL,
-    -- Dirección (Atributo Compuesto Expandido)
+    -- DirecciÃ¯Â¿Â½n (Atributo Compuesto Expandido)
     Canton VARCHAR(64) NOT NULL,
     Distrito VARCHAR(64) NOT NULL,
     Barrio VARCHAR(64) NOT NULL,
@@ -128,11 +128,13 @@ CREATE TABLE RedesSocialesEmpresa (
 CREATE TABLE ServiciosHotel (
     EmpresaID INT NOT NULL,
     ServicioID INT NOT NULL,
+    Precio DECIMAL(10, 2) NOT NULL,
 
     --Restricciones
     CONSTRAINT PK_Empresa_ServiciosHoteleros PRIMARY KEY (EmpresaID,ServicioID),
     CONSTRAINT FK_Servicios_Empresa FOREIGN KEY (EmpresaID) REFERENCES EmpresasHoteleras(EmpresaID),
-    CONSTRAINT FK_Servicio_Hotel FOREIGN KEY (ServicioID) REFERENCES Servicios(ServicioID)
+    CONSTRAINT FK_Servicio_Hotel FOREIGN KEY (ServicioID) REFERENCES Servicios(ServicioID),
+    CONSTRAINT CHK_PrecioServicioHotel CHECK (Precio > 0)
 );
 
 
@@ -142,7 +144,7 @@ CREATE TABLE ServiciosHotel (
 CREATE TABLE TelefonoEmpresa (
     TelefonoID INT NOT NULL IDENTITY,
     EmpresaID INT NOT NULL,
-    TelefonoNum INT NOT NULL,
+    TelefonoNum BIGINT NOT NULL,
 
     --Restricciones
     CONSTRAINT PK_Telefono PRIMARY KEY (TelefonoID),
@@ -269,7 +271,7 @@ CREATE TABLE Cliente (
     PrimerApellido VARCHAR(64) NOT NULL,
     SegundoApellido VARCHAR(64),
 
-    -- Dirección
+    -- DirecciÃ¯Â¿Â½n
     Provincia VARCHAR(64) NOT NULL,
     Canton VARCHAR(64) NOT NULL,
     Distrito VARCHAR(64) NOT NULL,
@@ -288,22 +290,22 @@ CREATE TABLE Cliente (
 
     CONSTRAINT CHK_IdentificacionCliente CHECK (
     CASE 
-        -- Cédula física (9 dígitos)
+        -- Cedula fisica (9 digitos)
         WHEN TipoIdentificacion = 'CEDULA'
              AND Identificacion NOT LIKE '%[^0-9]%' 
              AND LEN(Identificacion) = 9 THEN 1
         
-        -- Pasaporte (alfanumérico 6–15)
+        -- Pasaporte (alfanumerico)
         WHEN TipoIdentificacion = 'PASAPORTE'
              AND Identificacion NOT LIKE '%[^A-Za-z0-9]%' 
              AND LEN(Identificacion) BETWEEN 6 AND 15 THEN 1
         
-        -- DIMEX (11–12 dígitos)
+        -- DIMEX 
         WHEN TipoIdentificacion = 'DIMEX'
              AND Identificacion NOT LIKE '%[^0-9]%' 
              AND LEN(Identificacion) BETWEEN 11 AND 12 THEN 1
         
-        -- Licencia de conducir (9 alfanuméricos)
+        -- Licencia de conducir (9 alfanumericos)
         WHEN TipoIdentificacion = 'LicenciaDeConducir'
              AND Identificacion NOT LIKE '%[^A-Za-z0-9]%' 
              AND LEN(Identificacion) = 9 THEN 1
@@ -377,7 +379,7 @@ CREATE TABLE Factura (
     CONSTRAINT UQ_NumeroDeFactura UNIQUE (NumeroDeFactura),
 
     CONSTRAINT FK_Facturacion_Reserva FOREIGN KEY (ReservaID) REFERENCES Reserva(ReservaID),
-    CONSTRAINT CHK_FormaPago CHECK (FormatoDePago = 'Efectivo' OR FormatoDePago = 'SinpeMovil' OR FormatoDePago = 'Tarjeta'),
+    CONSTRAINT CHK_FormaPago CHECK (FormatoDePago = 'Efectivo' OR FormatoDePago = 'SinpeMovil' OR FormatoDePago = 'Tarjeta' OR FormatoDePago = 'Pendiente'),
     CONSTRAINT CHK_CargosAdicionales CHECK (CargosAdicionales >= 0)
 );
 
@@ -403,10 +405,10 @@ CREATE TABLE EmpresasRecreativas (
 
     --Contacto
     CorreoElectronico VARCHAR(256) NOT NULL UNIQUE,
-    Telefono INT UNIQUE NOT NULL,
+    Telefono BIGINT UNIQUE NOT NULL,
     NombreContacto VARCHAR(64) NOT NULL,
 
-    -- Dirección (Atributo Compuesto Expandido)
+    -- DirecciÃ¯Â¿Â½n (Atributo Compuesto Expandido)
     Canton VARCHAR(64) NOT NULL,
     Distrito VARCHAR(64) NOT NULL,
     OtrasSenas VARCHAR(MAX) NOT NULL,
@@ -426,11 +428,13 @@ CREATE TABLE EmpresasRecreativas (
 CREATE TABLE ServiciosRecreativa (  --Usar la misma tabla que usa la empresa hotelera??? 
     EmpresaID INT NOT NULL,
     ServicioID INT NOT NULL,
+    Precio DECIMAL(10, 2) NOT NULL,
 
     --Restricciones
     CONSTRAINT PK_Empresa_ServiciosRecrativos PRIMARY KEY (EmpresaID,ServicioID),
     CONSTRAINT FK_Servicios_Recreativa FOREIGN KEY (EmpresaID) REFERENCES EmpresasRecreativas(EmpresaID),
-    CONSTRAINT FK_Servicio_Recreativa FOREIGN KEY (ServicioID) REFERENCES Servicios(ServicioID)
+    CONSTRAINT FK_Servicio_Recreativa FOREIGN KEY (ServicioID) REFERENCES Servicios(ServicioID),
+    CONSTRAINT CHK_PrecioServicioRecreativa CHECK (Precio > 0)
 );
 
 
@@ -440,12 +444,15 @@ CREATE TABLE ServiciosRecreativa (  --Usar la misma tabla que usa la empresa hot
 CREATE TABLE Actividad_Recreativa (
     EmpresaID INT NOT NULL,
     ActividadID INT NOT NULL,
+    Precio DECIMAL(10, 2) NOT NULL,
 
     --Restricciones
     CONSTRAINT PK_Recreativa_Actividades_ID PRIMARY KEY (EmpresaID,ActividadID),
     CONSTRAINT FK_Actividad_Recreativa FOREIGN KEY (EmpresaID) REFERENCES EmpresasRecreativas(EmpresaID),
-    CONSTRAINT FK_ActividadID FOREIGN KEY (ActividadID) REFERENCES TipoActividad(ActividadID)
+    CONSTRAINT FK_ActividadID FOREIGN KEY (ActividadID) REFERENCES TipoActividad(ActividadID),
+    CONSTRAINT CHK_PrecioActividadRecreativa CHECK (Precio > 0)
 );
+
 
 
 

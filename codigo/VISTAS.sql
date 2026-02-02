@@ -1,5 +1,77 @@
--- Vista cliente
+﻿USE SistemaHotelero
+GO
 
+--Vista Reporte_Facturacion
+CREATE OR ALTER VIEW VW_Reporte_Facturacion
+AS
+SELECT 
+    e.EmpresaID,
+    e.Nombre AS Hotel,
+    e.Canton,
+    th.TipoHabitacionID,
+    th.Nombre AS TipoHabitacion,
+    h.NumeroHabitacion,
+    h.Precio,
+    f.FechaFacturacion,
+    f.NumeroDeFactura,
+    f.FormatoDePago,
+    f.CargosAdicionales,
+    r.NumeroDeNoches
+FROM Factura f
+JOIN Reserva r ON f.ReservaID = r.ReservaID
+JOIN Habitaciones h ON r.EmpresaID = h.EmpresaID 
+                   AND r.NumeroHabitacion = h.NumeroHabitacion
+JOIN TiposHabitaciones th ON h.TipoHabitacionID = th.TipoHabitacionID
+JOIN EmpresasHoteleras e ON r.EmpresaID = e.EmpresaID;
+GO
+
+
+--Vista Reporte Reservas Usadas
+CREATE OR ALTER VIEW VW_Reporte_ReservasUsadas
+AS
+SELECT 
+    e.Nombre AS Hotel,
+    th.TipoHabitacionID,
+    th.Nombre AS TipoHabitacion,
+    h.NumeroHabitacion,
+    r.ReservaID,
+    r.FechaEntrada,
+    r.NumeroDeNoches,
+    r.EstadoReserva
+FROM Reserva r
+JOIN Habitaciones h ON r.EmpresaID = h.EmpresaID 
+                   AND r.NumeroHabitacion = h.NumeroHabitacion
+JOIN TiposHabitaciones th ON h.TipoHabitacionID = th.TipoHabitacionID
+JOIN EmpresasHoteleras e ON r.EmpresaID = e.EmpresaID;
+GO
+
+--Vista reporte rengo de edad por hotel
+CREATE OR ALTER VIEW VW_Reporte_RangoEdadHotel
+AS
+SELECT 
+    e.Nombre AS Hotel,
+    DATEDIFF(YEAR, c.FechaNacimiento, GETDATE()) AS Edad
+FROM Reserva r
+JOIN Cliente c ON r.ClienteID = c.ClienteID
+JOIN EmpresasHoteleras e ON r.EmpresaID = e.EmpresaID;
+GO
+
+
+--Vista Reporte Demanda de cada hotel
+CREATE OR ALTER VIEW VW_Reporte_DemandaHotel
+AS
+SELECT 
+    e.EmpresaID,
+    e.Nombre AS Hotel,
+    e.Canton,
+    r.ReservaID,
+    r.FechaEntrada
+FROM Reserva r
+JOIN EmpresasHoteleras e ON r.EmpresaID = e.EmpresaID;
+GO
+
+
+-- Vista cliente
 CREATE OR ALTER VIEW vw_Clientes
 AS
 SELECT 
@@ -12,6 +84,7 @@ SELECT
     c.Nombre,
     c.PrimerApellido,
     c.SegundoApellido,
+    CONCAT(c.PrimerApellido,' ',c.SegundoApellido,' ',c.Nombre) AS NombreCliente,
     c.Provincia,
     c.Canton,
     c.Distrito
@@ -98,3 +171,42 @@ SELECT
 FROM EmpresasRecreativas er
 JOIN Usuario u ON er.UsuarioID = u.UsuarioID;
 GO
+
+
+
+--Vista factura
+CREATE OR ALTER VIEW VW_Factura_Detalle
+AS
+SELECT
+    f.FacturaID,
+    f.NumeroDeFactura,
+    f.FechaFacturacion,
+    f.FormatoDePago,
+    f.CargosAdicionales,
+
+    r.ReservaID,
+    r.FechaEntrada,
+    r.NumeroDeNoches,
+    r.CantPersonas,
+    r.PoseeVehiculo,
+    r.EstadoReserva,
+
+    h.NumeroHabitacion,
+    h.Nombre AS NombreHabitacion,
+    h.Precio AS PrecioHabitacion,
+
+    c.ClienteID,
+    CONCAT(c.PrimerApellido,' ',c.SegundoApellido,' ',c.Nombre) AS NombreCliente,
+    c.Identificacion,
+    c.CorreoElectronico,
+
+    eh.EmpresaID,
+    eh.Nombre AS NombreHotel
+FROM Factura f
+INNER JOIN Reserva r   ON f.ReservaID = r.ReservaID
+INNER JOIN Cliente c   ON r.ClienteID = c.ClienteID
+INNER JOIN EmpresasHoteleras eh ON r.EmpresaID = eh.EmpresaID
+INNER JOIN Habitaciones h 
+    ON r.EmpresaID = h.EmpresaID AND r.NumeroHabitacion = h.NumeroHabitacion;
+GO
+
